@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import LazyLoadComponent from './LazyLoadComponent';
 import './ScrollLazyLoad.css';
 
-const ScrollLazyLoad = ({ data }) => {
+  const ScrollLazyLoad = ({ data }) => {
   const [visibleItems, setVisibleItems] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -106,5 +106,6 @@ const ScrollLazyLoad = ({ data }) => {
     </div>
   );
 };
+
 
 export default ScrollLazyLoad; 
