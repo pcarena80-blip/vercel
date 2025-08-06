@@ -74,9 +74,10 @@ function App() {
 
         {activeTab === 'scroll' ? (
           <ScrollLazyLoad data={sampleData} />
-        ) : (
-          <ButtonLazyLoad data={sampleData} />
-        )}
+        ) //: (
+          //<ButtonLazyLoad data={sampleData} />
+        //)
+          }
       </div>
 
       {showScrollTop && (
@@ -90,3 +91,4 @@ function App() {
 
 
 export default App; 
+
