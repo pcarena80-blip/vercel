@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './App.css';
 import LazyLoadComponent from './components/LazyLoadComponent';
 import ScrollLazyLoad from './components/ScrollLazyLoad';
-import ButtonLazyLoad from './components/ButtonLazyLoad';
+//import ButtonLazyLoad from './components/ButtonLazyLoad';
 
 // Sample data - you can replace this with your own data
 const sampleData = [
@@ -87,5 +87,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App; 
