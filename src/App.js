@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './App.css';
 import LazyLoadComponent from './components/LazyLoadComponent';
 import ScrollLazyLoad from './components/ScrollLazyLoad';
+import ButtonLazyLoad from './components/ButtonLazyLoad';
 
-// Sample data
+// Sample data - you can replace this with your own data
 const sampleData = [
   { id: 1, title: "Product 1", description: "This is a beautiful product with amazing features", price: "$99", image: "https://picsum.photos/300/200?random=1" },
   { id: 2, title: "Product 2", description: "High quality product with premium design", price: "$149", image: "https://picsum.photos/300/200?random=2" },
@@ -28,8 +29,10 @@ const sampleData = [
 ];
 
 function App() {
+  const [activeTab, setActiveTab] = useState('scroll');
   const [showScrollTop, setShowScrollTop] = useState(false);
 
+  // Handle scroll to show/hide scroll to top button
   useEffect(() => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 300);
@@ -51,11 +54,30 @@ function App() {
       <div className="container">
         <header className="header">
           <h1>🔄 Lazy Loading Demo</h1>
-          <p>Scroll-based lazy loading with smooth animations</p>
+          <p>Scroll-based and Button-based lazy loading with smooth animations</p>
         </header>
 
-        {/* Removed tabs and directly render scroll lazy load */}
-        <ScrollLazyLoad data={sampleData} />
+        <div className="tabs">
+          <button 
+            className={`tab-button ${activeTab === 'scroll' ? 'active' : ''}`}
+            onClick={() => setActiveTab('scroll')}
+          >
+            📜 Scroll Lazy Loading
+          </button>
+          <button 
+            className={`tab-button ${activeTab === 'button' ? 'active' : ''}`}
+            onClick={() => setActiveTab('button')}
+          >
+            🔘 Button Lazy Loading
+          </button>
+        </div>
+
+        {activeTab === 'scroll' ? (
+          <ScrollLazyLoad data={sampleData} />
+        ) : (
+          <ButtonLazyLoad data={sampleData} />
+        )
+          }
       </div>
 
       {showScrollTop && (
@@ -67,4 +89,6 @@ function App() {
   );
 }
 
-export default App;
+
+export default App; 
+
